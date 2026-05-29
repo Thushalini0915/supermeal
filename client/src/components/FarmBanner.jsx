@@ -2,24 +2,30 @@ import { Link } from 'react-router-dom'
 
 function FarmBanner() {
   return (
-    <section className="py-6 md:py-8">
+    <section className="py-4 md:py-6">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl overflow-hidden">
-          <div className="grid md:grid-cols-2 items-center">
-            <div className="p-8 md:p-12">
-              <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Farm to Doorstep</h2>
-              <p className="text-amber-100 text-lg mb-6">Fresh fruits, vegetables, and organic produce delivered straight from the farm to your home.</p>
-              <Link to="/supermarket" className="inline-flex items-center gap-2 bg-white text-orange-700 px-6 py-3 rounded-full text-sm font-bold hover:bg-orange-50 transition-colors">
+        <Link to="/supermarket" className="block rounded-xl overflow-hidden bg-gradient-to-r from-amber-500 to-orange-600 relative min-h-[200px] md:min-h-[280px]">
+          <div className="grid md:grid-cols-2 items-center h-full">
+            <div className="p-8 md:p-10">
+              <h2 className="text-2xl md:text-3xl font-black text-white mb-3">
+                From Farm to Doorstep in 24 Hours with Freshness Guaranteed!
+              </h2>
+              <p className="text-amber-100 text-sm md:text-base mb-5 leading-relaxed">
+                Enjoy the finest produce straight from our very own farms, ensuring quality and convenience for a delightful experience at home!
+              </p>
+              <span className="inline-flex items-center gap-2 bg-white text-orange-700 px-5 py-2.5 rounded-full text-sm font-bold hover:bg-orange-50 transition-colors">
                 SHOP NOW <i className="fas fa-arrow-right text-xs"></i>
-              </Link>
+              </span>
             </div>
             <div className="hidden md:flex justify-center p-8">
-              <div className="text-center">
-                <i className="fas fa-truck text-white text-8xl opacity-30"></i>
-              </div>
+              <img
+                src="https://static.lassana.com/cdn-cgi/image/width=600,quality=93,f=auto/product_images/prod-2627-1753858694069161.jpg"
+                alt="Farm Fresh"
+                className="max-h-[240px] object-contain rounded-lg"
+              />
             </div>
           </div>
-        </div>
+        </Link>
       </div>
     </section>
   )

@@ -2,22 +2,30 @@ import { Link } from 'react-router-dom'
 
 function BloomsBanner() {
   return (
-    <section className="py-6 md:py-8">
+    <section className="py-4 md:py-6">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="bg-gradient-to-r from-green-600 to-emerald-700 rounded-2xl overflow-hidden">
-          <div className="grid md:grid-cols-2 items-center">
-            <div className="p-8 md:p-12">
-              <h2 className="text-3xl md:text-4xl font-black text-white mb-4">SuperMeal Blooms</h2>
-              <p className="text-green-100 text-lg mb-6">Fresh flowers delivered to your doorstep. Make every moment special with our handcrafted arrangements.</p>
-              <Link to="/flowers" className="inline-flex items-center gap-2 bg-white text-green-700 px-6 py-3 rounded-full text-sm font-bold hover:bg-green-50 transition-colors">
-                SHOP FLOWERS <i className="fas fa-arrow-right text-xs"></i>
-              </Link>
+        <Link to="/flowers" className="block rounded-xl overflow-hidden bg-gradient-to-r from-green-700 to-emerald-800 relative min-h-[200px] md:min-h-[280px]">
+          <div className="grid md:grid-cols-2 items-center h-full">
+            <div className="hidden md:block">
+              <img
+                src="https://static.lassana.com/cdn-cgi/image/width=600,quality=93,f=auto/product_images/prod-809-1692784184249.jpg"
+                alt="SuperMeal Blooms"
+                className="w-full h-[280px] object-cover"
+              />
             </div>
-            <div className="hidden md:flex justify-center p-8">
-              <img src="https://static.lassana.com/cdn-cgi/image/width=1920,quality=93,f=auto/banner_images/banner-1777972667933100.png" alt="SuperMeal Blooms" className="max-h-[250px] object-contain" />
+            <div className="p-8 md:p-10">
+              <h2 className="text-2xl md:text-3xl font-black text-white mb-3">
+                Unleash the enchanting beauty of SuperMeal Blooms!
+              </h2>
+              <p className="text-green-100 text-sm md:text-base mb-5 leading-relaxed">
+                Discover our world of freshness, fragrance, and enduring charm - carefully hand-picked for unmatched quality, vibrant colors and lustrous petals exude pure elegance.
+              </p>
+              <span className="inline-flex items-center gap-2 bg-white text-green-700 px-5 py-2.5 rounded-full text-sm font-bold hover:bg-green-50 transition-colors">
+                SHOP NOW <i className="fas fa-arrow-right text-xs"></i>
+              </span>
             </div>
           </div>
-        </div>
+        </Link>
       </div>
     </section>
   )

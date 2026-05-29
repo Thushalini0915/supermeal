@@ -6,6 +6,7 @@ import GiftByRecipient from '../components/GiftByRecipient'
 import BrandsSection from '../components/BrandsSection'
 import BloomsBanner from '../components/BloomsBanner'
 import PopularCategories from '../components/PopularCategories'
+import FeaturedProducts from '../components/FeaturedProducts'
 import FarmBanner from '../components/FarmBanner'
 import TrustPropositions from '../components/TrustPropositions'
 import Newsletter from '../components/Newsletter'
@@ -24,7 +25,7 @@ function HomePage() {
       <BloomsBanner />
       <ProductGrid title="NEW ARRIVALS" section="new-arrivals" fallbackData={newArrivalProducts} />
       <PopularCategories />
-      <ProductGrid title="FEATURED PRODUCTS" section="featured" fallbackData={featuredProducts} />
+      <FeaturedProducts products={featuredProducts} />
       <FarmBanner />
       <TrustPropositions />
       <Newsletter />
