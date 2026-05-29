@@ -5,7 +5,7 @@ export const superDealsProducts = [
     price: 4037.50,
     originalPrice: 4750.00,
     discount: '15% OFF',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-15410-177926100238241.jpg',
+    image: 'https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=500&q=80',
     category: 'flowers',
   },
   {
@@ -14,7 +14,7 @@ export const superDealsProducts = [
     price: 370.00,
     originalPrice: 435.00,
     discount: '15% OFF',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-5554-1739958489088195.png',
+    image: 'https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=500&q=80',
     category: 'pharmacy',
   },
   {
@@ -23,7 +23,7 @@ export const superDealsProducts = [
     price: 345.00,
     originalPrice: 406.00,
     discount: '15% OFF',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-5557-1694168497317.jpg',
+    image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=500&q=80',
     category: 'pharmacy',
   },
   {
@@ -32,7 +32,7 @@ export const superDealsProducts = [
     price: 2990.00,
     originalPrice: 3517.00,
     discount: '15% OFF',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-12439-1740397899173155.png',
+    image: 'https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=500&q=80',
     category: 'gifts',
   },
   {
@@ -41,7 +41,7 @@ export const superDealsProducts = [
     price: 3950.00,
     originalPrice: 4650.00,
     discount: '15% OFF',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14756-177170610571576.png',
+    image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=500&q=80',
     category: 'gifts',
   },
   {
@@ -50,7 +50,7 @@ export const superDealsProducts = [
     price: 730.00,
     originalPrice: 860.00,
     discount: '15% OFF',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-5556-1694168371610.jpg',
+    image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=500&q=80',
     category: 'pharmacy',
   },
   {
@@ -59,7 +59,7 @@ export const superDealsProducts = [
     price: 730.00,
     originalPrice: 860.00,
     discount: '15% OFF',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-6244-1694254043839.jpg',
+    image: 'https://images.unsplash.com/photo-1550572017-edd951b55104?w=500&q=80',
     category: 'pharmacy',
   },
   {
@@ -68,7 +68,7 @@ export const superDealsProducts = [
     price: 1590.00,
     originalPrice: null,
     discount: null,
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14756-17721541407289.png',
+    image: 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=500&q=80',
     category: 'perfumes',
   },
   {
@@ -77,7 +77,7 @@ export const superDealsProducts = [
     price: 1590.00,
     originalPrice: null,
     discount: null,
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14756-177215414072810.png',
+    image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=500&q=80',
     category: 'perfumes',
   },
   {
@@ -86,7 +86,7 @@ export const superDealsProducts = [
     price: 1590.00,
     originalPrice: null,
     discount: null,
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14756-177215414072811.png',
+    image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500&q=80',
     category: 'perfumes',
   },
 ]
@@ -99,7 +99,7 @@ export const bestSellerProducts = [
     originalPrice: 4750.00,
     discount: '15% OFF',
     badge: null,
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-15410-177926100238241.jpg',
+    image: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=500&q=80',
     category: 'flowers',
   },
   {
@@ -109,7 +109,7 @@ export const bestSellerProducts = [
     originalPrice: 4750.00,
     discount: '15% OFF',
     badge: null,
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-15409-1779256870217170.jpg',
+    image: 'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=500&q=80',
     category: 'flowers',
   },
   {
@@ -119,7 +119,7 @@ export const bestSellerProducts = [
     originalPrice: 2580.00,
     discount: '5% OFF',
     badge: null,
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-13792-175164119672819.jpg',
+    image: 'https://images.unsplash.com/photo-1587334206502-7b76f5054173?w=500&q=80',
     category: 'flowers',
   },
   {
@@ -129,7 +129,7 @@ export const bestSellerProducts = [
     originalPrice: 2580.00,
     discount: '5% OFF',
     badge: null,
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-13125-177788901651936.png',
+    image: 'https://images.unsplash.com/photo-1596436889106-be35e843f974?w=500&q=80',
     category: 'flowers',
   },
   {
@@ -139,7 +139,7 @@ export const bestSellerProducts = [
     originalPrice: null,
     discount: null,
     badge: 'BEST SELLER',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-2627-1753858694069161.jpg',
+    image: 'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=500&q=80',
     category: 'fruit',
   },
   {
@@ -149,7 +149,7 @@ export const bestSellerProducts = [
     originalPrice: null,
     discount: null,
     badge: 'BEST SELLER',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-3282-175368012283654.png',
+    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&q=80',
     category: 'cakes',
   },
   {
@@ -159,7 +159,7 @@ export const bestSellerProducts = [
     originalPrice: null,
     discount: null,
     badge: null,
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-15361-177773439740463.jpg',
+    image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&q=80',
     category: 'flowers',
   },
   {
@@ -169,7 +169,7 @@ export const bestSellerProducts = [
     originalPrice: null,
     discount: null,
     badge: 'BEST SELLER',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-13125-177788901651936.png',
+    image: 'https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=500&q=80',
     category: 'flowers',
   },
   {
@@ -179,7 +179,7 @@ export const bestSellerProducts = [
     originalPrice: null,
     discount: null,
     badge: null,
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-3282-175368012283654.png',
+    image: 'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=500&q=80',
     category: 'cakes',
   },
   {
@@ -189,7 +189,7 @@ export const bestSellerProducts = [
     originalPrice: null,
     discount: null,
     badge: null,
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-3282-175368012283654.png',
+    image: 'https://images.unsplash.com/photo-1535141192574-5d4897c13636?w=500&q=80',
     category: 'cakes',
   },
 ]
@@ -202,7 +202,7 @@ export const newArrivalProducts = [
     originalPrice: null,
     discount: null,
     badge: 'NEW',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14938-177908987994547.jpg',
+    image: 'https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=500&q=80',
     category: 'gifts',
   },
   {
@@ -212,7 +212,7 @@ export const newArrivalProducts = [
     originalPrice: null,
     discount: null,
     badge: 'NEW',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14957-1779442625803180.png',
+    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&q=80',
     category: 'supermarket',
   },
   {
@@ -222,7 +222,7 @@ export const newArrivalProducts = [
     originalPrice: 320.00,
     discount: '9% OFF',
     badge: null,
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14948-177931447218260.png',
+    image: 'https://images.unsplash.com/photo-1610832958506-ee5633619144?w=500&q=80',
     category: 'supermarket',
   },
   {
@@ -232,7 +232,7 @@ export const newArrivalProducts = [
     originalPrice: null,
     discount: null,
     badge: 'NEW',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14957-177944262580310.png',
+    image: 'https://images.unsplash.com/photo-1578849278619-e73505e9610f?w=500&q=80',
     category: 'supermarket',
   },
   {
@@ -242,7 +242,7 @@ export const newArrivalProducts = [
     originalPrice: null,
     discount: null,
     badge: 'NEW',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14641-1763618824940152.png',
+    image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=500&q=80',
     category: 'supermarket',
   },
   {
@@ -252,7 +252,7 @@ export const newArrivalProducts = [
     originalPrice: 4200.00,
     discount: '13% OFF',
     badge: null,
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14330-176310233962320.png',
+    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&q=80',
     category: 'gifts',
   },
   {
@@ -262,7 +262,7 @@ export const newArrivalProducts = [
     originalPrice: null,
     discount: null,
     badge: 'NEW',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14641-1763618824940152.png',
+    image: 'https://images.unsplash.com/photo-1610832958506-ee5633619144?w=500&q=80',
     category: 'supermarket',
   },
   {
@@ -272,7 +272,7 @@ export const newArrivalProducts = [
     originalPrice: 530.00,
     discount: '10% OFF',
     badge: null,
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14948-177931447218260.png',
+    image: 'https://images.unsplash.com/photo-1578849278619-e73505e9610f?w=500&q=80',
     category: 'supermarket',
   },
   {
@@ -282,7 +282,7 @@ export const newArrivalProducts = [
     originalPrice: null,
     discount: null,
     badge: 'NEW',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14641-1763618824940152.png',
+    image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=500&q=80',
     category: 'supermarket',
   },
   {
@@ -292,7 +292,7 @@ export const newArrivalProducts = [
     originalPrice: 2550.00,
     discount: '13% OFF',
     badge: null,
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14330-176310233962320.png',
+    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&q=80',
     category: 'gifts',
   },
 ]
@@ -305,7 +305,7 @@ export const featuredProducts = [
     originalPrice: null,
     discount: null,
     badge: 'BEST SELLER',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-13125-177788901651936.png',
+    image: 'https://images.unsplash.com/photo-1481349518771-20055b2a7b24?w=500&q=80',
     category: 'flowers',
   },
   {
@@ -315,7 +315,7 @@ export const featuredProducts = [
     originalPrice: null,
     discount: null,
     badge: null,
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-809-1692784184249.jpg',
+    image: 'https://images.unsplash.com/photo-1587334206502-7b76f5054173?w=500&q=80',
     category: 'cakes',
   },
   {
@@ -325,7 +325,7 @@ export const featuredProducts = [
     originalPrice: null,
     discount: null,
     badge: null,
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-8189-177028915812147.png',
+    image: 'https://images.unsplash.com/photo-1558961309-dbdf07c42734?w=500&q=80',
     category: 'gifts',
   },
   {
@@ -335,7 +335,7 @@ export const featuredProducts = [
     originalPrice: null,
     discount: null,
     badge: null,
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-3282-175368012283654.png',
+    image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=500&q=80',
     category: 'cakes',
   },
   {
@@ -345,7 +345,7 @@ export const featuredProducts = [
     originalPrice: null,
     discount: null,
     badge: null,
-    image: 'https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-8189-177028915812147.png',
+    image: 'https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?w=500&q=80',
     category: 'gifts',
   },
 ]

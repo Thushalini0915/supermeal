@@ -7,9 +7,11 @@ function BrandsSection() {
         <h2 className="text-center text-xl md:text-2xl font-black text-gray-900 mb-6">
           More than<span className="text-green-600">527+</span> Brands are available
         </h2>
-        <div className="flex overflow-x-auto scrollbar-none gap-6 md:gap-8 items-center justify-center pb-2">
-          {brands.map((url, index) => (
-            <img key={index} src={url} alt="Brand" className="h-10 md:h-14 w-auto flex-shrink-0 opacity-70 hover:opacity-100 transition-opacity" />
+        <div className="flex overflow-x-auto scrollbar-none gap-4 md:gap-6 items-center justify-center pb-2 px-4">
+          {brands.map((brandName, index) => (
+            <div key={index} className="px-5 py-2 md:py-3 bg-gray-50 border border-gray-100 text-gray-400 font-bold uppercase rounded-lg text-sm md:text-base tracking-wider hover:bg-gray-100 hover:text-green-700 hover:border-green-200 transition-all select-none whitespace-nowrap shadow-xs">
+              {brandName}
+            </div>
           ))}
         </div>
       </div>

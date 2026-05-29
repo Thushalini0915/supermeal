@@ -2,25 +2,56 @@
 
 @theme {
   --font-sans: 'Inter', sans-serif;
-  --color-brand-green: #4a7c59;
-  --color-brand-dark: #3d6b4a;
-  --color-brand-light: #e8f5e9;
+  --font-heading: 'Outfit', sans-serif;
+  --color-brand-green: #1b4d3e;
+  --color-brand-green-hover: #13382d;
+  --color-brand-green-light: #e8fcf6;
+  --color-brand-pink: #d9534f;
+  --color-brand-orange: #f0ad4e;
+  --color-brand-olive: #4d5830;
 }
 
-body {
-  background-color: #f9fafb;
+/* Custom Scrollbar Styles for elegant UI */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f9fafb;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
 }
 
+/* Scrollbar Utility to hide elements */
 .scrollbar-none::-webkit-scrollbar { display: none; }
 .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Line Clamp utility */
 .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-.product-card { position: relative; }
-.product-card:hover .add-to-cart-btn { opacity: 1; transform: translateY(0); }
-.add-to-cart-btn { opacity: 0; transform: translateY(10px); transition: all 0.3s ease; }
-@media (hover: none) { .add-to-cart-btn { opacity: 1; transform: translateY(0); } }
+/* Micro-animations and hover transitions */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
 
-.category-bubble:hover img { transform: scale(1.08); }
-.category-bubble img { transition: transform 0.3s ease; }
+.category-bubble:hover img {
+  transform: scale(1.1) rotate(2deg);
+}
+.category-bubble img {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
 
-.product-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+.btn-premium {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Outfit', sans-serif;
+}
+

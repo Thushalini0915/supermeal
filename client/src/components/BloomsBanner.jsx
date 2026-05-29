@@ -8,7 +8,7 @@ function BloomsBanner() {
           <div className="grid md:grid-cols-2 items-center h-full">
             <div className="hidden md:block">
               <img
-                src="https://static.lassana.com/cdn-cgi/image/width=600,quality=93,f=auto/product_images/prod-809-1692784184249.jpg"
+                src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=600&q=80"
                 alt="SuperMeal Blooms"
                 className="w-full h-[280px] object-cover"
               />

@@ -4,25 +4,25 @@ const popularCategories = [
   {
     name: 'Flowers',
     href: '/flowers',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=400,quality=93,f=auto/product_images/prod-15410-177926100238241.jpg',
+    image: 'https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=400&q=80',
     gradient: 'from-pink-600/80 to-red-500/80',
   },
   {
     name: 'Cakes',
     href: '/cakes',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=400,quality=93,f=auto/product_images/prod-3282-175368012283654.png',
+    image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80',
     gradient: 'from-amber-600/80 to-orange-500/80',
   },
   {
     name: 'Fresh Produce',
     href: '/supermarket/fresh',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=400,quality=93,f=auto/product_images/prod-2627-1753858694069161.jpg',
+    image: 'https://images.unsplash.com/photo-1610832958506-ee5633619144?w=400&q=80',
     gradient: 'from-green-600/80 to-emerald-500/80',
   },
   {
     name: 'Pharmacy',
     href: '/pharmacy',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=400,quality=93,f=auto/product_images/prod-5554-1739958489088195.png',
+    image: 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=400&q=80',
     gradient: 'from-blue-600/80 to-indigo-500/80',
   },
 ]

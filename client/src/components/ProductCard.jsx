@@ -5,46 +5,65 @@ function ProductCard({ product }) {
     return `Rs. ${price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
   }
 
+  // Calculate discount percentage or format discount text
+  const discountText = product.discount || (product.originalPrice && product.price 
+    ? `${Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF`
+    : null)
+
   return (
-    <div className="product-card bg-white border border-gray-100 hover:shadow-lg transition-all duration-300 overflow-hidden group relative">
-      <div className="relative">
-        {product.discount && (
-          <div className="absolute top-0 right-0 z-10">
-            <div className="w-0 h-0 border-t-[60px] border-t-red-500 border-l-[60px] border-l-transparent"></div>
-            <span className="absolute top-1 right-0.5 text-white text-[9px] font-bold leading-tight text-center" style={{ transform: 'rotate(45deg)', transformOrigin: 'center' }}>
-              {product.discount.replace(' OFF', '')}
-              <br />Off
+    <div className="product-card bg-white rounded-2xl border border-gray-100 shadow-xs hover:border-brand-green hover:shadow-md transition-all duration-300 overflow-hidden group flex flex-col justify-between p-3.5 relative">
+      <div>
+        {/* Badge Indicators */}
+        <div className="absolute top-3.5 left-3.5 z-10 flex flex-col gap-1">
+          {discountText && (
+            <span className="bg-brand-pink text-white text-[9px] font-black px-2.5 py-1 rounded-md shadow-xs uppercase tracking-wider">
+              {discountText}
             </span>
-          </div>
-        )}
-        {product.badge && !product.discount && (
-          <div className="absolute top-0 right-0 z-10">
-            <div className="w-0 h-0 border-t-[60px] border-t-orange-500 border-l-[60px] border-l-transparent"></div>
-            <span className="absolute top-1.5 right-0 text-white text-[8px] font-bold leading-tight text-center" style={{ transform: 'rotate(45deg)', transformOrigin: 'center' }}>
-              BEST
-              <br />SELLER
-            </span>
-          </div>
-        )}
-        <Link to={`/product/${product._id || product.id}`} className="block aspect-square bg-white flex items-center justify-center p-4">
-          <img src={product.image} alt={product.name} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
-        </Link>
-      </div>
-      <div className="px-3 pb-3 pt-2 border-t border-gray-50">
-        <p className="text-[10px] text-gray-400 mb-0.5">Image Copyright @ SuperMeal.lk</p>
-        <h3 className="text-xs font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2rem] uppercase">{product.name}</h3>
-        <div className="flex flex-col">
-          {product.originalPrice && (
-            <span className="text-gray-400 line-through text-xs">{formatPrice(product.originalPrice)}</span>
           )}
-          <span className="text-green-700 font-bold text-sm">{formatPrice(product.price)}</span>
+          {product.badge && !discountText && (
+            <span className={`text-white text-[9px] font-black px-2.5 py-1 rounded-md shadow-xs uppercase tracking-wider ${
+              product.badge === 'BEST SELLER' ? 'bg-brand-orange' : 'bg-brand-green'
+            }`}>
+              {product.badge}
+            </span>
+          )}
         </div>
+
+        {/* Product Image Link */}
+        <Link 
+          to={`/product/${product._id || product.id}`} 
+          className="block aspect-square bg-gray-50/50 rounded-xl overflow-hidden mb-3.5 p-4 flex items-center justify-center border border-gray-50"
+        >
+          <img 
+            src={product.image} 
+            alt={product.name} 
+            className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-106" 
+          />
+        </Link>
+
+        {/* Product Title */}
+        <h3 className="text-xs md:text-sm font-heading font-bold text-gray-800 text-center line-clamp-2 mb-2 min-h-[2.5rem] px-1 hover:text-brand-green transition-colors">
+          <Link to={`/product/${product._id || product.id}`}>{product.name}</Link>
+        </h3>
       </div>
-      <button className="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2.5 transition-all">
-        <i className="fas fa-shopping-cart mr-1"></i> Add To Cart
-      </button>
+
+      {/* Pricing and Action Button */}
+      <div className="space-y-3.5 mt-auto">
+        <div className="flex flex-col items-center justify-center gap-0.5">
+          <span className="text-brand-green font-black text-sm md:text-base">{formatPrice(product.price)}</span>
+          {product.originalPrice && (
+            <span className="text-gray-400 line-through text-xs font-semibold">{formatPrice(product.originalPrice)}</span>
+          )}
+        </div>
+        
+        <button className="w-full border-1.5 border-brand-green text-brand-green hover:bg-brand-green hover:text-white text-xs font-bold py-2 px-3 rounded-full transition-all duration-300 flex items-center justify-center gap-1.5 shadow-xs font-heading">
+          <i className="fas fa-shopping-basket text-[10px]"></i>
+          <span>ADD TO CART</span>
+        </button>
+      </div>
     </div>
   )
 }
 
 export default ProductCard
+

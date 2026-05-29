@@ -4,37 +4,37 @@ const recipients = [
   {
     name: 'For her',
     href: '/gifts/for-her',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=500,quality=93,f=auto/product_images/prod-15410-177926100238241.jpg',
+    image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&q=80',
     bg: 'bg-amber-50',
   },
   {
     name: 'For Kids',
     href: '/gifts/for-kids',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=500,quality=93,f=auto/product_images/prod-809-1692784184249.jpg',
+    image: 'https://images.unsplash.com/photo-1515488042361-404e9250afef?w=300&q=80',
     bg: 'bg-orange-50',
   },
   {
     name: 'For Mom',
     href: '/gifts/for-mom',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=500,quality=93,f=auto/product_images/prod-13792-175164119672819.jpg',
+    image: 'https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=300&q=80',
     bg: 'bg-pink-50',
   },
   {
     name: 'For him',
     href: '/gifts/for-him',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=500,quality=93,f=auto/product_images/prod-15409-1779256870217170.jpg',
+    image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=300&q=80',
     bg: 'bg-blue-50',
   },
   {
     name: 'For Friends',
     href: '/gifts/for-friends',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=500,quality=93,f=auto/product_images/prod-8189-177028915812147.png',
+    image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=300&q=80',
     bg: 'bg-purple-50',
   },
   {
     name: 'For dad',
     href: '/gifts/for-dad',
-    image: 'https://static.lassana.com/cdn-cgi/image/width=500,quality=93,f=auto/product_images/prod-15361-177773439740463.jpg',
+    image: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=300&q=80',
     bg: 'bg-sky-50',
   },
 ]
