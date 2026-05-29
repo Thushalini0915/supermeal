@@ -9,6 +9,7 @@ function Header() {
   const [deliveryDate, setDeliveryDate] = useState('Today')
   const [tempCity, setTempCity] = useState('Colombo 07')
   const [tempDate, setTempDate] = useState('Today')
+  const [categoriesDropdownOpen, setCategoriesDropdownOpen] = useState(false)
 
   const handleDeliverySubmit = (e) => {
     e.preventDefault()
@@ -133,26 +134,36 @@ function Header() {
           <div className="flex items-center justify-between">
             <div className="flex items-center overflow-x-auto scrollbar-none gap-2 py-0.5">
               {/* Categories Hover Trigger */}
-              <div className="relative group">
-                <button className="flex items-center gap-2 bg-emerald-950 text-white px-5 py-3.5 text-sm font-bold transition-colors font-heading tracking-wide">
+              <div 
+                className="relative"
+                onMouseEnter={() => setCategoriesDropdownOpen(true)}
+                onMouseLeave={() => setCategoriesDropdownOpen(false)}
+              >
+                <button 
+                  onClick={() => setCategoriesDropdownOpen(!categoriesDropdownOpen)}
+                  className="flex items-center gap-2 bg-emerald-950 text-white px-5 py-3.5 text-sm font-bold transition-colors font-heading tracking-wide cursor-pointer"
+                >
                   <i className="fas fa-th-large"></i>
                   CATEGORIES
                   <i className="fas fa-chevron-down text-[10px] ml-1"></i>
                 </button>
-                <div className="absolute left-0 top-full bg-white shadow-xl rounded-b-lg w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border-t-2 border-brand-green">
-                  <div className="py-1">
-                    {dropdownCategories.map((cat) => (
-                      <Link 
-                        key={cat.name} 
-                        to={`/category/${cat.name.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`} 
-                        className="flex items-center gap-3 px-5 py-2.5 hover:bg-brand-green-light text-sm text-gray-700 font-semibold transition-colors"
-                      >
-                        <i className={`${cat.icon} text-brand-green w-5 text-center`}></i> 
-                        <span>{cat.name}</span>
-                      </Link>
-                    ))}
+                {categoriesDropdownOpen && (
+                  <div className="absolute left-0 top-full bg-white shadow-xl rounded-b-lg w-64 z-50 border-t-2 border-brand-green transition-all duration-200">
+                    <div className="py-1">
+                      {dropdownCategories.map((cat) => (
+                        <Link 
+                          key={cat.name} 
+                          to={`/category/${cat.name.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`} 
+                          onClick={() => setCategoriesDropdownOpen(false)}
+                          className="flex items-center gap-3 px-5 py-2.5 hover:bg-brand-green-light text-sm text-gray-700 font-semibold transition-colors"
+                        >
+                          <i className={`${cat.icon} text-brand-green w-5 text-center`}></i> 
+                          <span>{cat.name}</span>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
 
               {/* Main Nav Links */}
