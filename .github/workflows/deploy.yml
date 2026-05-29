@@ -1,0 +1,93 @@
+name: Build and Deploy SuperMeal.lk
+
+on:
+  push:
+    branches:
+      - base-branch
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  # Job 1: Build & Verify Frontend & Backend
+  build-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-node-version: 18
+          cache: 'npm'
+
+      - name: Install Root Dependencies
+        run: npm install
+
+      - name: Install and Build Client
+        run: |
+          cd client
+          npm install
+          npm run build
+
+      - name: Install Server Dependencies
+        run: |
+          cd server
+          npm install
+
+      - name: Upload Build Artifacts (Client Dist)
+        uses: actions/upload-artifact@v4
+        with:
+          name: client-dist
+          path: client/dist/
+
+  # Job 2: Deploy Frontend to GitHub Pages
+  deploy-frontend:
+    needs: build-and-verify
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: client-dist
+          path: dist
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  # Job 3: Trigger Backend Deploy Hook (Render / Heroku / DigitalOcean)
+  deploy-backend:
+    needs: build-and-verify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Webhook Deploy
+        # Triggered if backend webhook URL secret exists
+        env:
+          BACKEND_DEPLOY_WEBHOOK: ${{ secrets.BACKEND_DEPLOY_WEBHOOK }}
+        run: |
+          if [ -n "$BACKEND_DEPLOY_WEBHOOK" ]; then
+            echo "Triggering backend deployment webhook..."
+            curl -X POST "$BACKEND_DEPLOY_WEBHOOK"
+          else
+            echo "No BACKEND_DEPLOY_WEBHOOK secret configured. Skipping backend webhook trigger."
+          fi
