@@ -1,0 +1,19 @@
+{
+  "name": "supermeal",
+  "version": "1.0.0",
+  "description": "SuperMeal.lk - MERN Stack E-Commerce Application",
+  "scripts": {
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
+  },
+  "dependencies": {
+    "concurrently": "^9.0.0"
+  },
+  "keywords": ["mern", "ecommerce", "supermeal"],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SuperMeal.lk | Wholesome Meals with Grandma's Touch</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome v6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Google Fonts - Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            brand: { green: '#4a7c59', dark: '#3d6b4a', light: '#e8f5e9' },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .scrollbar-none::-webkit-scrollbar { display: none; }
+    .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+    .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .hero-slide { animation: fadeSlide 12s infinite; }
+    @keyframes fadeSlide { 0%,30% { opacity:1; } 33%,97% { opacity:0; } 100% { opacity:1; } }
+    .hero-slide:nth-child(2) { animation-delay: 4s; }
+    .hero-slide:nth-child(3) { animation-delay: 8s; }
+    .product-card:hover .add-to-cart-btn { opacity: 1; transform: translateY(0); }
+    .add-to-cart-btn { opacity: 0; transform: translateY(10px); transition: all 0.3s ease; }
+    @media (hover: none) { .add-to-cart-btn { opacity: 1; transform: translateY(0); } }
+    .category-bubble:hover img { transform: scale(1.08); }
+    .category-bubble img { transition: transform 0.3s ease; }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 antialiased">
+
+  <!-- ============================================================
+       SECTION A: STICKY HEADER & NAVIGATION
+       ============================================================ -->
+  <header class="sticky top-0 z-50 bg-white shadow-sm">
+
+    <!-- Top Header Bar -->
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+
+      <!-- Logo -->
+      <a href="/" class="flex-shrink-0">
+        <img src="supermeal-logo.jpeg" alt="SuperMeal.lk" class="h-12 md:h-14 w-auto" />
+      </a>
+
+      <!-- Search Bar -->
+      <div class="hidden sm:flex flex-1 max-w-2xl mx-4">
+        <div class="flex w-full rounded-lg overflow-hidden border border-gray-300 focus-within:border-green-600 focus-within:ring-1 focus-within:ring-green-600">
+          <input type="text" placeholder="Search for anything..." class="flex-1 px-4 py-2.5 text-sm outline-none bg-white" />
+          <button class="bg-green-600 hover:bg-green-700 text-white px-5 transition-colors">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Actions -->
+      <div class="flex items-center gap-4 md:gap-6 flex-shrink-0">
+        <!-- Hotline -->
+        <div class="hidden lg:flex flex-col items-end">
+          <span class="text-xs text-gray-500">Happiness Hotline</span>
+          <a href="tel:94112001122" class="text-lg font-bold text-gray-800 hover:text-green-700">011 2001122</a>
+        </div>
+        <!-- Account -->
+        <a href="#" class="flex flex-col items-center text-gray-600 hover:text-green-700 transition-colors">
+          <i class="fas fa-user text-xl"></i>
+          <span class="text-[10px] mt-0.5">Account</span>
+        </a>
+        <!-- Cart -->
+        <a href="#" class="relative flex flex-col items-center text-gray-600 hover:text-green-700 transition-colors">
+          <i class="fas fa-shopping-cart text-xl"></i>
+          <span class="absolute -top-1.5 -right-2 bg-orange-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+          <span class="text-[10px] mt-0.5">Cart</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Mobile Search (visible on small screens) -->
+    <div class="sm:hidden px-4 pb-3">
+      <div class="flex w-full rounded-lg overflow-hidden border border-gray-300">
+        <input type="text" placeholder="Search for anything..." class="flex-1 px-4 py-2 text-sm outline-none" />
+        <button class="bg-green-600 text-white px-4"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+
+    <!-- Mega Menu Navigation Bar -->
+    <nav class="bg-green-700">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex items-center overflow-x-auto scrollbar-none gap-1">
+          <!-- Categories Dropdown -->
+          <div class="relative group flex-shrink-0">
+            <button class="flex items-center gap-2 bg-green-800 hover:bg-green-900 text-white px-4 py-3 text-sm font-semibold transition-colors rounded-t-md">
+              <i class="fas fa-th-large"></i>
+              Categories
+              <i class="fas fa-chevron-down text-xs"></i>
+            </button>
+            <!-- Dropdown -->
+            <div class="absolute left-0 top-full bg-white shadow-xl rounded-b-lg w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="py-2">
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-50 text-sm text-gray-700"><i class="fas fa-seedling text-green-600 w-5"></i> Flowers</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-50 text-sm text-gray-700"><i class="fas fa-birthday-cake text-green-600 w-5"></i> Cakes and Bakes</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-50 text-sm text-gray-700"><i class="fas fa-store text-green-600 w-5"></i> Supermarket</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-50 text-sm text-gray-700"><i class="fas fa-pills text-green-600 w-5"></i> Pharmacy</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-50 text-sm text-gray-700"><i class="fas fa-apple-whole text-green-600 w-5"></i> Fruit &amp; Veggie Baskets</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-50 text-sm text-gray-700"><i class="fas fa-gift text-green-600 w-5"></i> Hampers</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-50 text-sm text-gray-700"><i class="fas fa-cookie-bite text-green-600 w-5"></i> Chocolates &amp; Cookies</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-50 text-sm text-gray-700"><i class="fas fa-candy-cane text-green-600 w-5"></i> Traditional Treats</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-50 text-sm text-gray-700"><i class="fas fa-gifts text-green-600 w-5"></i> Gifts</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-50 text-sm text-gray-700"><i class="fas fa-puzzle-piece text-green-600 w-5"></i> Toys</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-50 text-sm text-gray-700"><i class="fas fa-leaf text-green-600 w-5"></i> Plants</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-50 text-sm text-gray-700"><i class="fas fa-spray-can-sparkles text-green-600 w-5"></i> Perfumes</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-50 text-sm text-gray-700"><i class="fas fa-ticket text-green-600 w-5"></i> Gift Vouchers</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-50 text-sm text-gray-700"><i class="fas fa-gem text-green-600 w-5"></i> Jewelry</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-50 text-sm text-gray-700"><i class="fas fa-couch text-green-600 w-5"></i> Home &amp; Living</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-50 text-sm text-gray-700"><i class="fas fa-envelope-open-text text-green-600 w-5"></i> Greeting Cards</a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-green-50 text-sm text-gray-700"><i class="fas fa-om text-green-600 w-5"></i> Pirikara &amp; Pooja Bhanda</a>
+              </div>
+            </div>
+          </div>
+          <!-- Nav Links -->
+          <a href="#" class="flex-shrink-0 text-white hover:bg-green-800 px-3 py-3 text-sm font-semibold transition-colors whitespace-nowrap">EID GIFT COLLECTION</a>
+          <a href="#" class="flex-shrink-0 text-white hover:bg-green-800 px-3 py-3 text-sm font-medium transition-colors whitespace-nowrap">Flowers</a>
+          <a href="#" class="flex-shrink-0 text-white hover:bg-green-800 px-3 py-3 text-sm font-medium transition-colors whitespace-nowrap">Cakes And Bakes</a>
+          <a href="#" class="flex-shrink-0 text-white hover:bg-green-800 px-3 py-3 text-sm font-medium transition-colors whitespace-nowrap">Supermarket</a>
+          <a href="#" class="flex-shrink-0 text-white hover:bg-green-800 px-3 py-3 text-sm font-medium transition-colors whitespace-nowrap">Pharmacy</a>
+          <a href="#" class="flex-shrink-0 text-white hover:bg-green-800 px-3 py-3 text-sm font-medium transition-colors whitespace-nowrap">Money Delivery</a>
+          <a href="#" class="flex-shrink-0 text-white hover:bg-green-800 px-3 py-3 text-sm font-medium transition-colors whitespace-nowrap">Daily Deals</a>
+          <a href="#" class="flex-shrink-0 bg-white text-green-700 hover:bg-green-50 px-4 py-2 text-sm font-semibold rounded-full ml-auto whitespace-nowrap">Order Status</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         SECTION B: HERO CAROUSEL / PROMO BANNER
+         ============================================================ -->
+    <section class="relative overflow-hidden bg-gradient-to-r from-pink-100 via-green-50 to-pink-50">
+      <div class="max-w-7xl mx-auto">
+        <!-- Slide 1: Delivery Schedule -->
+        <div class="grid md:grid-cols-2 items-center min-h-[350px] md:min-h-[420px] px-4 md:px-8">
+          <div class="py-8 md:py-12">
+            <h1 class="text-4xl md:text-6xl font-black text-gray-900 leading-tight mb-6">
+              Your Time,<br/>Your Delivery.
+            </h1>
+            <div class="space-y-3">
+              <div class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full px-5 py-2 text-sm font-semibold shadow-md">
+                <span class="font-normal">ORDER BEFORE 4AM FOR</span><br/>
+                <span class="font-bold text-base">MORNING DELIVERY (6AM - 12PM)</span>
+              </div>
+              <div class="block"></div>
+              <div class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full px-5 py-2 text-sm font-semibold shadow-md">
+                <span class="font-normal">ORDER BEFORE 11AM FOR</span><br/>
+                <span class="font-bold text-base">AFTERNOON DELIVERY (12PM - 6PM)</span>
+              </div>
+              <div class="block"></div>
+              <div class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full px-5 py-2 text-sm font-semibold shadow-md">
+                <span class="font-normal">ORDER BEFORE 4PM FOR</span><br/>
+                <span class="font-bold text-base">EVENING DELIVERY (6PM - 10PM)</span>
+              </div>
+            </div>
+            <p class="text-xs text-gray-500 mt-4">*VALID FOR COLOMBO DISTRICT, WATTALA &amp; KELANIYA.</p>
+          </div>
+          <div class="hidden md:flex justify-center items-center">
+            <img src="https://static.lassana.com/cdn-cgi/image/width=1920,quality=93,f=auto/banner_images/banner-1777972667933100.png" alt="Delivery" class="max-h-[400px] w-full object-contain" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION C: QUICK CATEGORY ICON BUBBLES
+         ============================================================ -->
+    <section class="py-8 md:py-10 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex overflow-x-auto scrollbar-none gap-4 md:gap-6 pb-2 justify-start md:justify-center">
+          <!-- Category: Flowers -->
+          <a href="#" class="category-bubble flex flex-col items-center gap-2 group flex-shrink-0 w-20 md:w-24">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-50 flex items-center justify-center overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+              <img src="https://static.lassana.com/cdn-cgi/image/width=100,quality=93,f=auto/category_images/cat-1714987625037.png" alt="Flowers" class="w-12 h-12 md:w-16 md:h-16 object-contain" />
+            </div>
+            <span class="text-xs md:text-sm font-semibold text-gray-700 text-center">Flowers</span>
+          </a>
+          <!-- Category: Cakes and Bakes -->
+          <a href="#" class="category-bubble flex flex-col items-center gap-2 group flex-shrink-0 w-20 md:w-24">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-pink-50 flex items-center justify-center overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+              <img src="https://static.lassana.com/cdn-cgi/image/width=100,quality=93,f=auto/category_images/cat-1705663688238.png" alt="Cakes" class="w-12 h-12 md:w-16 md:h-16 object-contain" />
+            </div>
+            <span class="text-xs md:text-sm font-semibold text-gray-700 text-center">Cakes and Bakes</span>
+          </a>
+          <!-- Category: Supermarket -->
+          <a href="#" class="category-bubble flex flex-col items-center gap-2 group flex-shrink-0 w-20 md:w-24">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-green-50 flex items-center justify-center overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+              <img src="https://static.lassana.com/cdn-cgi/image/width=100,quality=93,f=auto/category_images/cat-1705664187085.png" alt="Supermarket" class="w-12 h-12 md:w-16 md:h-16 object-contain" />
+            </div>
+            <span class="text-xs md:text-sm font-semibold text-gray-700 text-center">Supermarket</span>
+          </a>
+          <!-- Category: Pharmacy -->
+          <a href="#" class="category-bubble flex flex-col items-center gap-2 group flex-shrink-0 w-20 md:w-24">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-blue-50 flex items-center justify-center overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+              <img src="https://static.lassana.com/cdn-cgi/image/width=100,quality=93,f=auto/category_images/cat-1705908431460.png" alt="Pharmacy" class="w-12 h-12 md:w-16 md:h-16 object-contain" />
+            </div>
+            <span class="text-xs md:text-sm font-semibold text-gray-700 text-center">Pharmacy</span>
+          </a>
+          <!-- Category: Fruit & Veggie Baskets -->
+          <a href="#" class="category-bubble flex flex-col items-center gap-2 group flex-shrink-0 w-20 md:w-24">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-orange-50 flex items-center justify-center overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+              <img src="https://static.lassana.com/cdn-cgi/image/width=100,quality=93,f=auto/category_images/cat-1705664565820.png" alt="Fruit & Veggie" class="w-12 h-12 md:w-16 md:h-16 object-contain" />
+            </div>
+            <span class="text-xs md:text-sm font-semibold text-gray-700 text-center">Fruit &amp; Veggie</span>
+          </a>
+          <!-- Category: Hampers -->
+          <a href="#" class="category-bubble flex flex-col items-center gap-2 group flex-shrink-0 w-20 md:w-24">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-purple-50 flex items-center justify-center overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+              <img src="https://static.lassana.com/cdn-cgi/image/width=100,quality=93,f=auto/category_images/cat-1776404427611197.png" alt="Hampers" class="w-12 h-12 md:w-16 md:h-16 object-contain" />
+            </div>
+            <span class="text-xs md:text-sm font-semibold text-gray-700 text-center">Hampers</span>
+          </a>
+          <!-- Category: Chocolates & Cookies -->
+          <a href="#" class="category-bubble flex flex-col items-center gap-2 group flex-shrink-0 w-20 md:w-24">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-yellow-50 flex items-center justify-center overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+              <img src="https://static.lassana.com/cdn-cgi/image/width=100,quality=93,f=auto/category_images/cat-1705904988064.png" alt="Chocolates" class="w-12 h-12 md:w-16 md:h-16 object-contain" />
+            </div>
+            <span class="text-xs md:text-sm font-semibold text-gray-700 text-center">Chocolates &amp; Cookies</span>
+          </a>
+          <!-- Category: Traditional Treats -->
+          <a href="#" class="category-bubble flex flex-col items-center gap-2 group flex-shrink-0 w-20 md:w-24">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-red-50 flex items-center justify-center overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+              <img src="https://static.lassana.com/cdn-cgi/image/width=100,quality=93,f=auto/category_images/cat-1694154263837.png" alt="Traditional Treats" class="w-12 h-12 md:w-16 md:h-16 object-contain" />
+            </div>
+            <span class="text-xs md:text-sm font-semibold text-gray-700 text-center">Traditional Treats</span>
+          </a>
+          <!-- Category: Gifts -->
+          <a href="#" class="category-bubble flex flex-col items-center gap-2 group flex-shrink-0 w-20 md:w-24">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-teal-50 flex items-center justify-center overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+              <img src="https://static.lassana.com/cdn-cgi/image/width=100,quality=93,f=auto/category_images/cat-1705902025937.png" alt="Gifts" class="w-12 h-12 md:w-16 md:h-16 object-contain" />
+            </div>
+            <span class="text-xs md:text-sm font-semibold text-gray-700 text-center">Gifts</span>
+          </a>
+          <!-- Category: Plants -->
+          <a href="#" class="category-bubble flex flex-col items-center gap-2 group flex-shrink-0 w-20 md:w-24">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-green-50 flex items-center justify-center overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+              <img src="https://static.lassana.com/cdn-cgi/image/width=100,quality=93,f=auto/category_images/cat-1705667420233.png" alt="Plants" class="w-12 h-12 md:w-16 md:h-16 object-contain" />
+            </div>
+            <span class="text-xs md:text-sm font-semibold text-gray-700 text-center">Plants</span>
+          </a>
+          <!-- Category: Perfumes -->
+          <a href="#" class="category-bubble flex flex-col items-center gap-2 group flex-shrink-0 w-20 md:w-24">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-indigo-50 flex items-center justify-center overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+              <img src="https://static.lassana.com/cdn-cgi/image/width=100,quality=93,f=auto/category_images/cat-1706001406039.png" alt="Perfumes" class="w-12 h-12 md:w-16 md:h-16 object-contain" />
+            </div>
+            <span class="text-xs md:text-sm font-semibold text-gray-700 text-center">Perfumes</span>
+          </a>
+          <!-- Category: Gift Vouchers -->
+          <a href="#" class="category-bubble flex flex-col items-center gap-2 group flex-shrink-0 w-20 md:w-24">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-pink-50 flex items-center justify-center overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+              <img src="https://static.lassana.com/cdn-cgi/image/width=100,quality=93,f=auto/category_images/cat-1706938414603.png" alt="Gift Vouchers" class="w-12 h-12 md:w-16 md:h-16 object-contain" />
+            </div>
+            <span class="text-xs md:text-sm font-semibold text-gray-700 text-center">Gift Vouchers</span>
+          </a>
+          <!-- Category: Jewelry -->
+          <a href="#" class="category-bubble flex flex-col items-center gap-2 group flex-shrink-0 w-20 md:w-24">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-50 flex items-center justify-center overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+              <img src="https://static.lassana.com/cdn-cgi/image/width=100,quality=93,f=auto/category_images/cat-1705926633048.png" alt="Jewelry" class="w-12 h-12 md:w-16 md:h-16 object-contain" />
+            </div>
+            <span class="text-xs md:text-sm font-semibold text-gray-700 text-center">Jewelry</span>
+          </a>
+          <!-- Category: Home & Living -->
+          <a href="#" class="category-bubble flex flex-col items-center gap-2 group flex-shrink-0 w-20 md:w-24">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-sky-50 flex items-center justify-center overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+              <img src="https://static.lassana.com/cdn-cgi/image/width=100,quality=93,f=auto/category_images/cat-1710933924966.png" alt="Home & Living" class="w-12 h-12 md:w-16 md:h-16 object-contain" />
+            </div>
+            <span class="text-xs md:text-sm font-semibold text-gray-700 text-center">Home &amp; Living</span>
+          </a>
+          <!-- Category: Greeting Cards -->
+          <a href="#" class="category-bubble flex flex-col items-center gap-2 group flex-shrink-0 w-20 md:w-24">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-rose-50 flex items-center justify-center overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+              <img src="https://static.lassana.com/cdn-cgi/image/width=100,quality=93,f=auto/category_images/cat-1705677755470.png" alt="Greeting Cards" class="w-12 h-12 md:w-16 md:h-16 object-contain" />
+            </div>
+            <span class="text-xs md:text-sm font-semibold text-gray-700 text-center">Greeting Cards</span>
+          </a>
+          <!-- Category: Pirikara & Pooja Bhanda -->
+          <a href="#" class="category-bubble flex flex-col items-center gap-2 group flex-shrink-0 w-20 md:w-24">
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-yellow-50 flex items-center justify-center overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+              <img src="https://static.lassana.com/cdn-cgi/image/width=100,quality=93,f=auto/category_images/cat-1705678502610.png" alt="Pirikara" class="w-12 h-12 md:w-16 md:h-16 object-contain" />
+            </div>
+            <span class="text-xs md:text-sm font-semibold text-gray-700 text-center leading-tight">Pirikara &amp; Pooja Bhanda</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION D: MID-PAGE MULTI-PROMO CARDS
+         ============================================================ -->
+    <section class="py-6 md:py-8">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          <!-- Promo Card 1: Supermarket -->
+          <a href="#" class="relative rounded-2xl overflow-hidden group shadow-md hover:shadow-xl transition-shadow">
+            <img src="https://static.lassana.com/cdn-cgi/image/width=450,quality=93,f=auto/promotion_section_image/promotion_section-1694578771518.jpg" alt="Supermarket" class="w-full h-48 md:h-56 object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4">
+              <h3 class="text-white font-bold text-lg">Your One-Stop Online Supermarket</h3>
+              <span class="inline-flex items-center gap-1 text-white text-sm font-semibold mt-2 hover:underline">
+                ORDER NOW <i class="fas fa-arrow-right text-xs"></i>
+              </span>
+            </div>
+          </a>
+          <!-- Promo Card 2: Pharmacy -->
+          <a href="#" class="relative rounded-2xl overflow-hidden group shadow-md hover:shadow-xl transition-shadow">
+            <img src="https://static.lassana.com/cdn-cgi/image/width=450,quality=93,f=auto/promotion_section_image/promotion_section-1716789552982.png" alt="Pharmacy" class="w-full h-48 md:h-56 object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4">
+              <h3 class="text-white font-bold text-lg">Delivering Health &amp; Happiness</h3>
+              <span class="inline-flex items-center gap-1 text-white text-sm font-semibold mt-2 hover:underline">
+                ORDER NOW <i class="fas fa-arrow-right text-xs"></i>
+              </span>
+            </div>
+          </a>
+          <!-- Promo Card 3: Daily Deals -->
+          <a href="#" class="relative rounded-2xl overflow-hidden group shadow-md hover:shadow-xl transition-shadow">
+            <img src="https://static.lassana.com/cdn-cgi/image/width=450,quality=93,f=auto/promotion_section_image/promotion_section-1724927853672.jpg" alt="Daily Deals" class="w-full h-48 md:h-56 object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4">
+              <h3 class="text-white font-bold text-lg">SuperMeal Daily Deals - Save up to 50% off</h3>
+              <span class="inline-flex items-center gap-1 text-white text-sm font-semibold mt-2 hover:underline">
+                ORDER NOW <i class="fas fa-arrow-right text-xs"></i>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION E: PRODUCT GRID - SUPER DEALS
+         ============================================================ -->
+    <section class="py-6 md:py-8 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <!-- Section Title -->
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-2xl md:text-3xl font-black text-gray-900">SUPER DEALS <span class="text-red-500 text-lg font-bold">15% Off</span></h2>
+          <a href="#" class="text-green-600 hover:text-green-700 font-semibold text-sm flex items-center gap-1">View All <i class="fas fa-arrow-right text-xs"></i></a>
+        </div>
+        <!-- Product Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
+
+          <!-- Product Card 1 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">15% OFF</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-15410-177926100238241.jpg" alt="THE PROMISE" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">THE PROMISE</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 4,037.50</span>
+                <span class="text-gray-400 line-through text-xs">Rs. 4,750.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product Card 2 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">15% OFF</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-5554-1739958489088195.png" alt="KHOMBA BABY COLOGNE" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">KHOMBA BABY COLOGNE FLORAL 50ML</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 370.00</span>
+                <span class="text-gray-400 line-through text-xs">Rs. 435.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product Card 3 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">15% OFF</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-5557-1694168497317.jpg" alt="KHOMBA BABY CREAM" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">KHOMBA BABY CREAM RATHMAL 100ML</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 345.00</span>
+                <span class="text-gray-400 line-through text-xs">Rs. 406.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product Card 4 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">15% OFF</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-12439-1740397899173155.png" alt="ENCHANTED ROMANCE BUNDLE" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">ENCHANTED ROMANCE BUNDLE</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 2,990.00</span>
+                <span class="text-gray-400 line-through text-xs">Rs. 3,517.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product Card 5 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">15% OFF</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-12440-1740398310283151.png" alt="AIR FRAGRANCE VALUE PACK" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">AIR FRAGRANCE VALUE PACK</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 3,950.00</span>
+                <span class="text-gray-400 line-through text-xs">Rs. 4,650.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product Card 6 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">15% OFF</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-5439-1694150770553.jpg" alt="KHOMBA BODYWASH" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">KHOMBA BODYWASH LEMONGRASS 250ML</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 730.00</span>
+                <span class="text-gray-400 line-through text-xs">Rs. 860.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product Card 7 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">15% OFF</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-5485-175154569188572.png" alt="RANI SHOWER CREAM" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">RANI SHOWER CREAM SANDALWOOD 250ML</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 730.00</span>
+                <span class="text-gray-400 line-through text-xs">Rs. 860.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product Card 8 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-10328-1778494558285160.jpeg" alt="HER MAJESTY BODY MIST" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">HER MAJESTY BODY MIST SILK MUSK 135ML</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 1,590.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product Card 9 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-10331-177849449297762.jpeg" alt="HER MAJESTY BODY MIST FLORAL" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">HER MAJESTY BODY MIST FLORAL MISS 135ML</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 1,590.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Product Card 10 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-10329-177849452179065.jpeg" alt="HER MAJESTY BODY MIST PINK" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">HER MAJESTY BODY MIST PINK BLUSH 135ML</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 1,590.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         GIFT BY RECIPIENT SECTION
+         ============================================================ -->
+    <section class="py-6 md:py-8">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <!-- For Her -->
+          <a href="#" class="relative rounded-2xl overflow-hidden group h-48 md:h-64 bg-green-50">
+            <div class="absolute inset-0 p-5 flex flex-col justify-start z-10">
+              <h3 class="text-xl md:text-2xl font-black text-gray-900">FOR HER</h3>
+              <span class="flex items-center gap-2 text-sm font-semibold text-gray-700 mt-2">Shop Now <i class="fas fa-arrow-right text-xs"></i></span>
+            </div>
+            <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-15410-177926100238241.jpg" alt="For Her" class="absolute bottom-0 right-0 w-32 md:w-44 h-auto object-contain group-hover:scale-105 transition-transform" />
+          </a>
+          <!-- For Kids -->
+          <a href="#" class="relative rounded-2xl overflow-hidden group h-48 md:h-64 bg-red-100">
+            <div class="absolute inset-0 p-5 flex flex-col justify-start z-10">
+              <h3 class="text-xl md:text-2xl font-black text-gray-900">FOR KIDS</h3>
+              <span class="flex items-center gap-2 text-sm font-semibold text-gray-700 mt-2">Shop Now <i class="fas fa-arrow-right text-xs"></i></span>
+            </div>
+            <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-809-1692784184249.jpg" alt="For Kids" class="absolute bottom-0 right-0 w-32 md:w-44 h-auto object-contain group-hover:scale-105 transition-transform" />
+          </a>
+          <!-- For Mom -->
+          <a href="#" class="relative rounded-2xl overflow-hidden group h-48 md:h-64 bg-green-100">
+            <div class="absolute inset-0 p-5 flex flex-col justify-start z-10">
+              <h3 class="text-xl md:text-2xl font-black text-gray-900">FOR MOM</h3>
+              <span class="flex items-center gap-2 text-sm font-semibold text-gray-700 mt-2">Shop Now <i class="fas fa-arrow-right text-xs"></i></span>
+            </div>
+            <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-13792-175164119672819.jpg" alt="For Mom" class="absolute bottom-0 right-0 w-32 md:w-44 h-auto object-contain group-hover:scale-105 transition-transform" />
+          </a>
+          <!-- For Him -->
+          <a href="#" class="relative rounded-2xl overflow-hidden group h-48 md:h-64 bg-blue-50">
+            <div class="absolute inset-0 p-5 flex flex-col justify-start z-10">
+              <h3 class="text-xl md:text-2xl font-black text-gray-900">FOR HIM</h3>
+              <span class="flex items-center gap-2 text-sm font-semibold text-gray-700 mt-2">Shop Now <i class="fas fa-arrow-right text-xs"></i></span>
+            </div>
+            <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-15409-1779256870217170.jpg" alt="For Him" class="absolute bottom-0 right-0 w-32 md:w-44 h-auto object-contain group-hover:scale-105 transition-transform" />
+          </a>
+          <!-- For Friends -->
+          <a href="#" class="relative rounded-2xl overflow-hidden group h-48 md:h-64 bg-purple-100">
+            <div class="absolute inset-0 p-5 flex flex-col justify-start z-10">
+              <h3 class="text-xl md:text-2xl font-black text-gray-900">FOR FRIENDS</h3>
+              <span class="flex items-center gap-2 text-sm font-semibold text-gray-700 mt-2">Shop Now <i class="fas fa-arrow-right text-xs"></i></span>
+            </div>
+            <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-8189-177028915812147.png" alt="For Friends" class="absolute bottom-0 right-0 w-32 md:w-44 h-auto object-contain group-hover:scale-105 transition-transform" />
+          </a>
+          <!-- For Dad -->
+          <a href="#" class="relative rounded-2xl overflow-hidden group h-48 md:h-64 bg-sky-100">
+            <div class="absolute inset-0 p-5 flex flex-col justify-start z-10">
+              <h3 class="text-xl md:text-2xl font-black text-gray-900">FOR DAD</h3>
+              <span class="flex items-center gap-2 text-sm font-semibold text-gray-700 mt-2">Shop Now <i class="fas fa-arrow-right text-xs"></i></span>
+            </div>
+            <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-15361-177773439740463.jpg" alt="For Dad" class="absolute bottom-0 right-0 w-32 md:w-44 h-auto object-contain group-hover:scale-105 transition-transform" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BRANDS SECTION
+         ============================================================ -->
+    <section class="py-8 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-center text-2xl md:text-3xl font-black text-gray-900 mb-6">More than <span class="text-green-600">527+</span> Brands are available</h2>
+        <div class="flex overflow-x-auto scrollbar-none gap-6 items-center justify-center pb-2">
+          <img src="https://static.lassana.com/cdn-cgi/image/width=150,quality=100,f=auto/brand_image/brand-1710736666783.jpg" alt="Brand" class="h-12 md:h-16 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all" />
+          <img src="https://static.lassana.com/cdn-cgi/image/width=150,quality=100,f=auto/brand_image/brand-1692180765300.jpg" alt="Brand" class="h-12 md:h-16 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all" />
+          <img src="https://static.lassana.com/cdn-cgi/image/width=150,quality=100,f=auto/brand_image/brand-1710736413676.jpg" alt="Brand" class="h-12 md:h-16 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all" />
+          <img src="https://static.lassana.com/cdn-cgi/image/width=150,quality=100,f=auto/brand_image/brand-1710740006878.png" alt="Brand" class="h-12 md:h-16 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all" />
+          <img src="https://static.lassana.com/cdn-cgi/image/width=150,quality=100,f=auto/brand_image/brand-1710740502891.png" alt="Brand" class="h-12 md:h-16 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all" />
+          <img src="https://static.lassana.com/cdn-cgi/image/width=150,quality=100,f=auto/brand_image/brand-1715055168287.jpg" alt="Brand" class="h-12 md:h-16 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all" />
+          <img src="https://static.lassana.com/cdn-cgi/image/width=150,quality=100,f=auto/brand_image/brand-1691316185152.jpg" alt="Brand" class="h-12 md:h-16 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all" />
+          <img src="https://static.lassana.com/cdn-cgi/image/width=150,quality=100,f=auto/brand_image/brand-1693478617304.jpg" alt="Brand" class="h-12 md:h-16 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all" />
+          <img src="https://static.lassana.com/cdn-cgi/image/width=150,quality=100,f=auto/brand_image/brand-1691316130141.png" alt="Brand" class="h-12 md:h-16 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all" />
+          <img src="https://static.lassana.com/cdn-cgi/image/width=150,quality=100,f=auto/brand_image/brand-1693478497611.jpg" alt="Brand" class="h-12 md:h-16 w-auto flex-shrink-0 grayscale hover:grayscale-0 transition-all" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION E: PRODUCT GRID - BEST SELLERS
+         ============================================================ -->
+    <section class="py-6 md:py-8">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-2xl md:text-3xl font-black text-gray-900">BEST SELLERS</h2>
+          <a href="#" class="text-green-600 hover:text-green-700 font-semibold text-sm flex items-center gap-1">View All <i class="fas fa-arrow-right text-xs"></i></a>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
+
+          <!-- Best Seller Card 1 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">15% OFF</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-15410-177926100238241.jpg" alt="THE PROMISE" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">THE PROMISE</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 4,037.50</span>
+                <span class="text-gray-400 line-through text-xs">Rs. 4,750.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Best Seller Card 2 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">15% OFF</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-15409-1779256870217170.jpg" alt="TO MY HERO" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">TO MY HERO</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 4,037.50</span>
+                <span class="text-gray-400 line-through text-xs">Rs. 4,750.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Best Seller Card 3 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">5% OFF</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-15412-177968689046329.jpg" alt="SUNSET ROMANCE" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">SUNSET ROMANCE</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 2,450.00</span>
+                <span class="text-gray-400 line-through text-xs">Rs. 2,580.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Best Seller Card 4 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">5% OFF</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-15411-177934601569575.jpg" alt="CRIMSON RADIANCE" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">CRIMSON RADIANCE</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 2,450.00</span>
+                <span class="text-gray-400 line-through text-xs">Rs. 2,580.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Best Seller Card 5 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">BEST SELLER</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-799-1770620749539178.png" alt="EXOTIC MIX FRUIT BASKET" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">EXOTIC MIX FRUIT BASKET</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 5,250.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Best Seller Card 6 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">BEST SELLER</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-809-1692784184249.jpg" alt="BERRY CHOCO JARDIN" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">BERRY CHOCO JARDIN 1KG CHOCOLATE CAKE</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 6,250.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Best Seller Card 7 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-571-1770204181119187.jpeg" alt="FOREVER IN BLOOM" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">FOREVER IN BLOOM</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 4,250.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Best Seller Card 8 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">BEST SELLER</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-13125-177788901651936.png" alt="HEARTSTOPPER" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">HEARTSTOPPER</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 16,450.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Best Seller Card 9 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14944-1770090711130139.jpg" alt="LOVE AT FIRST SLICE" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">LOVE AT FIRST SLICE CAKE 1KG</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 6,550.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Best Seller Card 10 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-15342-1778243592222117.png" alt="THANK YOU MUM CAKE" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">THANK YOU, MUM CAKE RIBBON CAKE</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 5,300.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FLOWERS PROMO BANNER
+         ============================================================ -->
+    <section class="py-6 md:py-8 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <a href="#" class="block rounded-2xl overflow-hidden bg-gradient-to-r from-green-800 to-green-600 group">
+          <div class="grid md:grid-cols-2 items-center">
+            <div class="p-8 md:p-12 text-white">
+              <h2 class="text-2xl md:text-3xl font-black mb-3">Unleash the enchanting beauty of SuperMeal Blooms!</h2>
+              <p class="text-green-100 text-sm md:text-base mb-6">Discover our world of freshness, fragrance, and enduring charm - carefully hand-picked for unmatched quality, vibrant colors and lustrous petals exude pure elegance.</p>
+              <span class="inline-flex items-center gap-2 bg-white text-green-700 px-6 py-2.5 rounded-full font-bold text-sm group-hover:bg-green-50 transition-colors">
+                SHOP NOW <i class="fas fa-arrow-right"></i>
+              </span>
+            </div>
+            <div class="flex justify-center p-4">
+              <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/images/homepromoflow.png" alt="SuperMeal Blooms" class="max-h-64 w-auto object-contain" />
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION E: PRODUCT GRID - NEW ARRIVALS
+         ============================================================ -->
+    <section class="py-6 md:py-8">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-2xl md:text-3xl font-black text-gray-900">NEW ARRIVALS</h2>
+          <a href="#" class="text-green-600 hover:text-green-700 font-semibold text-sm flex items-center gap-1">View All <i class="fas fa-arrow-right text-xs"></i></a>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
+
+          <!-- New Arrival Card 1 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-green-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">NEW</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14832-1766031236010137.jpeg" alt="PROMATE ACADEMIC ESSENTIALS" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">PROMATE ACADEMIC ESSENTIALS PACK</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 7,840.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- New Arrival Card 2 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-green-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">NEW</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14691-1765366438833119.jpeg" alt="SOBAKO CORN PITTU FLOUR" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">SOBAKO CORN PITTU FLOUR 400G</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 645.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- New Arrival Card 3 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">9% OFF</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14647-1763619245542107.png" alt="TURBO NITRO CLASSIC" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">TURBO NITRO CLASSIC 250ML</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 290.00</span>
+                <span class="text-gray-400 line-through text-xs">Rs. 320.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- New Arrival Card 4 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-green-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">NEW</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14690-1765367083439169.jpeg" alt="SOBAKO SUWANDEL" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">SOBAKO SUWANDEL STRING HOPPER FLOUR 400G</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 590.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- New Arrival Card 5 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-green-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">NEW</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14640-176361897752326.png" alt="KOTTUME" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">KOTTUME KOCHCHI &amp; CHICKEN 78G - ELLA STYLE</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 135.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- New Arrival Card 6 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">13% OFF</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14329-1763102277444112.png" alt="CAILA BATH TOWEL" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">CAILA BATH TOWEL 27"X54"</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 3,670.00</span>
+                <span class="text-gray-400 line-through text-xs">Rs. 4,200.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- New Arrival Card 7 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-green-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">NEW</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14642-176361872791570.png" alt="KOTTUME KOREAN RAMEN" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">KOTTUME KOREAN RAMEN CHICKEN MASALA 117G</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 300.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- New Arrival Card 8 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">10% OFF</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14648-176361936592269.png" alt="TURBO NITRO PREMIUM" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">TURBO NITRO PREMIUM 250ML</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 475.00</span>
+                <span class="text-gray-400 line-through text-xs">Rs. 530.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- New Arrival Card 9 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-green-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">NEW</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14641-1763618824940152.png" alt="KOTTUME NAI MIRIS" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">KOTTUME NAI MIRIS &amp; SEAFOOD 80G - MIRISSA STYLE</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 135.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- New Arrival Card 10 -->
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">13% OFF</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-14330-176310233962320.png" alt="CAILA FACE TOWEL" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">CAILA FACE TOWEL 20"X40"</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 2,220.00</span>
+                <span class="text-gray-400 line-through text-xs">Rs. 2,550.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         POPULAR CATEGORIES VISUAL GRID
+         ============================================================ -->
+    <section class="py-6 md:py-8 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-black text-gray-900 mb-6">POPULAR CATEGORIES</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <a href="#" class="relative rounded-2xl overflow-hidden h-40 md:h-52 group">
+            <div class="absolute inset-0 bg-gradient-to-br from-pink-400 to-red-500"></div>
+            <div class="absolute inset-0 p-5 flex flex-col justify-end text-white z-10">
+              <h3 class="text-xl font-bold">Flowers</h3>
+              <span class="flex items-center gap-1 text-sm mt-1">SHOP NOW <i class="fas fa-arrow-right text-xs"></i></span>
+            </div>
+          </a>
+          <a href="#" class="relative rounded-2xl overflow-hidden h-40 md:h-52 group">
+            <div class="absolute inset-0 bg-gradient-to-br from-amber-400 to-orange-500"></div>
+            <div class="absolute inset-0 p-5 flex flex-col justify-end text-white z-10">
+              <h3 class="text-xl font-bold">Cakes</h3>
+              <span class="flex items-center gap-1 text-sm mt-1">SHOP NOW <i class="fas fa-arrow-right text-xs"></i></span>
+            </div>
+          </a>
+          <a href="#" class="relative rounded-2xl overflow-hidden h-40 md:h-52 group">
+            <div class="absolute inset-0 bg-gradient-to-br from-green-400 to-emerald-600"></div>
+            <div class="absolute inset-0 p-5 flex flex-col justify-end text-white z-10">
+              <h3 class="text-xl font-bold">Fresh Produce</h3>
+              <span class="flex items-center gap-1 text-sm mt-1">SHOP NOW <i class="fas fa-arrow-right text-xs"></i></span>
+            </div>
+          </a>
+          <a href="#" class="relative rounded-2xl overflow-hidden h-40 md:h-52 group">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-400 to-indigo-500"></div>
+            <div class="absolute inset-0 p-5 flex flex-col justify-end text-white z-10">
+              <h3 class="text-xl font-bold">Pharmacy</h3>
+              <span class="flex items-center gap-1 text-sm mt-1">SHOP NOW <i class="fas fa-arrow-right text-xs"></i></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FEATURED PRODUCTS
+         ============================================================ -->
+    <section class="py-6 md:py-8">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-black text-gray-900 mb-6">FEATURED PRODUCTS</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
+
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <span class="absolute top-2 left-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">BEST SELLER</span>
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-13125-177788901651936.png" alt="HEARTSTOPPER" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">HEARTSTOPPER</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 16,450.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-809-1692784184249.jpg" alt="Gentleman's Toast" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">Gentleman's Toast Chocolate Cake 1.6KG</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 7,950.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-8189-177028915812147.png" alt="GRAND WELLNESS" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">GRAND WELLNESS BLOSSOM BUNDLE</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 9,100.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-13792-175164119672819.jpg" alt="SEBASTIAN STRAWBERRY" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">SEBASTIAN STRAWBERRY BAKED CHEESE CAKE</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 7,000.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div class="relative">
+              <a href="#" class="block aspect-square bg-gray-50 flex items-center justify-center p-3">
+                <img src="https://static.lassana.com/cdn-cgi/image/width=350,quality=93,f=auto/product_images/prod-15361-177773439740463.jpg" alt="RADIANT GLOW" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </a>
+            </div>
+            <div class="p-3">
+              <h3 class="text-xs md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 min-h-[2.5rem]">RADIANT GLOW WOMEN'S DAY GIFT PACK</h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-green-700 font-bold text-sm">Rs. 10,000.00</span>
+              </div>
+              <button class="add-to-cart-btn w-full bg-green-600 hover:bg-green-700 text-white text-xs font-semibold py-2 rounded-lg transition-all">
+                <i class="fas fa-shopping-cart mr-1"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FARM TO DOORSTEP BANNER
+         ============================================================ -->
+    <section class="py-6 md:py-8 bg-gradient-to-r from-green-50 to-emerald-50">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center py-8">
+          <h2 class="text-2xl md:text-3xl font-black text-gray-900 mb-3">From Farm to Doorstep in 24 Hours with Freshness Guaranteed!</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">Enjoy the finest produce straight from our very own farms, ensuring quality and convenience for a delightful experience at home!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION F: TRUST PROPOSITIONS & VALUE ROW
+         ============================================================ -->
+    <section class="py-8 md:py-10 bg-white border-t border-gray-100">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          <!-- Shipping -->
+          <div class="flex flex-col items-center text-center gap-3">
+            <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center">
+              <i class="fas fa-truck text-green-600 text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-sm text-gray-800">SHIPPING</h4>
+              <p class="text-xs text-gray-500 mt-1">Delivery Starts from Rs. 200</p>
+            </div>
+          </div>
+          <!-- Payment Options -->
+          <div class="flex flex-col items-center text-center gap-3">
+            <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center">
+              <i class="fas fa-credit-card text-blue-600 text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-sm text-gray-800">MULTIPLE PAYMENT OPTIONS</h4>
+              <p class="text-xs text-gray-500 mt-1">Credit/Debit Cards, Bank Transfer &amp; Cash Deposit available</p>
+            </div>
+          </div>
+          <!-- Secured Payments -->
+          <div class="flex flex-col items-center text-center gap-3">
+            <div class="w-14 h-14 bg-amber-100 rounded-full flex items-center justify-center">
+              <i class="fas fa-shield-halved text-amber-600 text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-sm text-gray-800">SECURED PAYMENTS</h4>
+              <p class="text-xs text-gray-500 mt-1">Payments are secured by Commercial Bank, Sampath Bank &amp; Nations Trust Bank</p>
+            </div>
+          </div>
+          <!-- Branch Network -->
+          <div class="flex flex-col items-center text-center gap-3">
+            <div class="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center">
+              <i class="fas fa-map-location-dot text-purple-600 text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-sm text-gray-800">BRANCH NETWORK</h4>
+              <p class="text-xs text-gray-500 mt-1">Colombo 07, Nawala, Panadura, Negombo, Kandy, Jaffna</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         NEWSLETTER SUBSCRIPTION
+         ============================================================ -->
+    <section class="py-10 md:py-12 bg-green-700">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-2xl md:text-3xl font-black text-white mb-3">SUBSCRIBE TO US</h2>
+          <p class="text-green-100 text-sm md:text-base mb-6">We're ready to work together to get your products delivered on time. Subscribe to our newsletters to receive SuperMeal.lk emails and be the first to know about exclusive offers, promotions, and more.</p>
+          <div class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+            <input type="email" placeholder="Email Address" class="flex-1 px-5 py-3 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-400" />
+            <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-3 rounded-lg text-sm transition-colors tracking-wide">
+              SUBSCRIBE
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       SECTION F: MULTI-TIER FOOTER
+       ============================================================ -->
+  <footer class="bg-gray-900 text-gray-300">
+
+    <!-- Footer Links Grid -->
+    <div class="max-w-7xl mx-auto px-4 py-12">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+
+        <!-- SuperMeal Group -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-4 uppercase tracking-wider">SuperMeal Group</h4>
+          <ul class="space-y-2.5">
+            <li><a href="#" class="text-sm hover:text-green-400 transition-colors">SuperMeal Weddings</a></li>
+            <li><a href="#" class="text-sm hover:text-green-400 transition-colors">SuperMeal Events</a></li>
+            <li><a href="#" class="text-sm hover:text-green-400 transition-colors">La Treats</a></li>
+          </ul>
+        </div>
+
+        <!-- Info -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-4 uppercase tracking-wider">Info</h4>
+          <ul class="space-y-2.5">
+            <li><a href="#" class="text-sm hover:text-green-400 transition-colors">About SuperMeal</a></li>
+            <li><a href="#" class="text-sm hover:text-green-400 transition-colors">Other Services</a></li>
+            <li><a href="#" class="text-sm hover:text-green-400 transition-colors">Contact Us</a></li>
+            <li><a href="#" class="text-sm hover:text-green-400 transition-colors">FAQ</a></li>
+            <li><a href="#" class="text-sm hover:text-green-400 transition-colors">Site Map</a></li>
+          </ul>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-4 uppercase tracking-wider">Quick Links</h4>
+          <ul class="space-y-2.5">
+            <li><a href="#" class="text-sm hover:text-green-400 transition-colors">Supermarket</a></li>
+            <li><a href="#" class="text-sm hover:text-green-400 transition-colors">Flowers</a></li>
+            <li><a href="#" class="text-sm hover:text-green-400 transition-colors">Cakes &amp; Bakes</a></li>
+            <li><a href="#" class="text-sm hover:text-green-400 transition-colors">Pharmacy</a></li>
+          </ul>
+        </div>
+
+        <!-- Our Ventures -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-4 uppercase tracking-wider">Our Ventures</h4>
+          <ul class="space-y-2.5">
+            <li><a href="#" class="text-sm hover:text-green-400 transition-colors">Our Plantations</a></li>
+            <li><a href="#" class="text-sm hover:text-green-400 transition-colors">Agri Innovation</a></li>
+            <li><a href="#" class="text-sm hover:text-green-400 transition-colors">Our Bakery</a></li>
+            <li><a href="#" class="text-sm hover:text-green-400 transition-colors">Retail Network</a></li>
+            <li><a href="#" class="text-sm hover:text-green-400 transition-colors">Modern Trade Network</a></li>
+            <li><a href="#" class="text-sm hover:text-green-400 transition-colors">SuperMeal Flora Academy</a></li>
+          </ul>
+        </div>
+
+        <!-- Colombo Head Office -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-4 uppercase tracking-wider">Colombo Head Office</h4>
+          <div class="text-sm space-y-1">
+            <p>SuperMeal.lk (Pvt) Ltd</p>
+            <p>279C, Nawala Road,</p>
+            <p>Nawala, Rajagiriya</p>
+            <p class="mt-3">Email: info@supermeal.lk</p>
+            <p>Hotline: 011 2001122</p>
+          </div>
+        </div>
+
+        <!-- Keep in Touch -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-4 uppercase tracking-wider">Keep In Touch</h4>
+          <div class="flex gap-3">
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-green-600 rounded-full flex items-center justify-center transition-colors">
+              <i class="fab fa-facebook-f text-white"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors">
+              <i class="fab fa-youtube text-white"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-pink-600 rounded-full flex items-center justify-center transition-colors">
+              <i class="fab fa-instagram text-white"></i>
+            </a>
+          </div>
+          <!-- Payments -->
+          <div class="mt-6">
+            <h5 class="text-white font-bold text-xs mb-3 uppercase">Payments</h5>
+            <div class="flex gap-2 flex-wrap">
+              <div class="bg-white rounded px-2 py-1"><i class="fab fa-cc-visa text-blue-700 text-xl"></i></div>
+              <div class="bg-white rounded px-2 py-1"><i class="fab fa-cc-mastercard text-red-600 text-xl"></i></div>
+              <div class="bg-white rounded px-2 py-1"><i class="fab fa-cc-amex text-blue-500 text-xl"></i></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Copyright Row -->
+    <div class="border-t border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-gray-500">
+        <div class="flex items-center gap-3">
+          <a href="#" class="hover:text-green-400 transition-colors">TERMS &amp; CONDITIONS</a>
+          <span>|</span>
+          <a href="#" class="hover:text-green-400 transition-colors">PRIVACY POLICY</a>
+        </div>
+        <p>&copy; 2026 SuperMeal.lk (Pvt) Ltd. &bull; All rights reserved.</p>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 w-12 h-12 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg flex items-center justify-center transition-colors z-50">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+</body>
+</html>
