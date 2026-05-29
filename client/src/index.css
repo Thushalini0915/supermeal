@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --color-brand-green: #4a7c59;
+  --color-brand-dark: #3d6b4a;
+  --color-brand-light: #e8f5e9;
+}
+
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.product-card:hover .add-to-cart-btn { opacity: 1; transform: translateY(0); }
+.add-to-cart-btn { opacity: 0; transform: translateY(10px); transition: all 0.3s ease; }
+@media (hover: none) { .add-to-cart-btn { opacity: 1; transform: translateY(0); } }
+.category-bubble:hover img { transform: scale(1.08); }
+.category-bubble img { transition: transform 0.3s ease; }
